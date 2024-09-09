@@ -70,5 +70,21 @@ namespace winform_app
             alta.ShowDialog();
             cargar();
         }
+
+        private void Tbusqueda_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            List<Articulo> listaArticulosBuscados;
+            string filtro = Tbusqueda.Text;
+            if(filtro != "")
+            {
+                listaArticulosBuscados = listaArticulos.FindAll(i => i.Nombre.ToUpper().Contains(filtro.ToUpper()));
+            }
+            else
+            {
+                listaArticulosBuscados = listaArticulos;
+            }
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaArticulosBuscados;
+        }
     }
 }
