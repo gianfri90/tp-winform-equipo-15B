@@ -18,6 +18,9 @@ namespace winform_app
         public frmArticulos()
         {
             InitializeComponent();
+            CBcampo.Items.Add("Precio");
+            CBcampo.Items.Add("Marca");
+            CBcampo.Items.Add("Categoria");
         }
 
         private void frmArticulos_Load(object sender, EventArgs e)
@@ -85,6 +88,17 @@ namespace winform_app
             }
             dgvArticulos.DataSource = null;
             dgvArticulos.DataSource = listaArticulosBuscados;
+        }
+
+        private void CbCriterio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string OpcionCampo = CBcampo.SelectedItem.ToString();
+            if (OpcionCampo == "Precio")
+            {
+                CbCriterio.Items.Clear();
+                CbCriterio.Items.Add("Mayor a");
+                CbCriterio.Items.Add("Menor a");
+            }
         }
     }
 }
